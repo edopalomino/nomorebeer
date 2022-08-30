@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import {connectToDatabase} from "./api/mongodb";
+import {connectToDatabase} from './api/mongodb';
 
 export default function Home({data}) {
 
