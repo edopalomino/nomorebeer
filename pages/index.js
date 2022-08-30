@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import {connectToDatabase} from "../utils/db/mongodb";
 
-export default function Home() {
+export default function Home({data}) {
 
   return (
     <div className={styles.container}>
@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-          <div className={styles.circle} ><div className={styles.number}>1</div></div>
+          <div className={styles.circle} ><div className={styles.number}>{data.data}</div></div>
           <div className={styles.ocean}>
               <div className={styles.wave}></div>
               <div className={styles.wave}></div>
@@ -22,4 +22,14 @@ export default function Home() {
 
     </div>
   )
+}
+
+export async function getServerSideProps() {
+    let mongo = await connectToDatabase();
+    let value = await mongo.db.collection('beers').findOne();
+
+    let data = {data: value.quantity}
+    return {
+        props: { data }, // will be passed to the page component as props
+    }
 }
