@@ -3,7 +3,7 @@
   "sources": {
     "osm": {
       "type": "raster",
-      "tiles": ["https://tile.openstreetmap.de/transport/{z}/{x}/{y}.png"],
+      "tiles": ["https://tiles.openbusmap.org/{z}/{x}/{y}.png"],
       "tileSize": 256,
       "attribution": "&copy; OpenStreetMap Contributors",
       "maxzoom": 19
